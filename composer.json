@@ -1,0 +1,25 @@
+{
+    "name": "satrobit/prtg-php",
+    "type": "library",
+    "description": "PHP API Wrapper for PRTG",
+    "keywords": ["prtg", "prtg-php", "monitoring", "network"],
+    "homepage": "https://github.com/satrobit/prtg-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amir Keshavarz",
+            "email": "amirkekh@gmail.com",
+            "homepage": "https://github.com/satrobit",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "classmap": [
+            "prtg.class.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
