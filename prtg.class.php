@@ -134,9 +134,6 @@ class prtg {
 		return $response;
 	}
 
-	
-
-
 }
 
 ?>
