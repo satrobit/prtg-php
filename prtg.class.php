@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class prtg
- * @package satrobit\prtg-php
- */
+* Class prtg
+* @package satrobit\prtg-php
+*/
 class prtg {
 	private static $server;
 	private static $username;
@@ -11,10 +11,10 @@ class prtg {
 	private static $passhash;
 
 	/**
-     * @param string $server
-     * @param string $username
-     * @param string $password
-     */
+	* @param string $server
+	* @param string $username
+	* @param string $password
+	*/
 	function __construct($server, $username, $password)
 	{
 		if (empty($server)) throw new Exception('Server parameter cannot be empty.');
@@ -28,10 +28,10 @@ class prtg {
 	}
 
 	/**
-     * @param string $url
-     *
-     * @return string
-     */
+	* @param string $url
+	*
+	* @return string
+	*/
 	private function sendRequest($url)
 	{
     	$ch = curl_init();
@@ -46,13 +46,13 @@ class prtg {
 	}
 
 	/**
-     * @param string $path
-     * @param array $parameters
-     * @param bool $auth
-     * @param bool $json
-     *
-     * @return array
-     */
+	* @param string $path
+	* @param array $parameters
+	* @param bool $auth
+	* @param bool $json
+	*
+	* @return array
+	*/
 	private function get($path, $parameters, $json = true, $auth = true)
 	{
 		if ($auth)
@@ -72,8 +72,8 @@ class prtg {
 	}
 
 	/**
-     * @return int
-     */
+	* @return int
+	*/
 	public function getpasshash()
 	{
 		$response =  $this->get('api/getpasshash.htm', ['username' => self::$username, 'password' => self::$password], false, false);
@@ -84,10 +84,10 @@ class prtg {
 	}
 
 	/**
-     * @param int $sensorId
-     *
-     * @return array
-     */
+	* @param int $sensorId
+	*
+	* @return array
+	*/
 	public function getsensordetails($sensorId)
 	{
 		$response =  $this->get('api/getsensordetails.json', ['id' => $sensorId]);
@@ -98,13 +98,13 @@ class prtg {
 	}
 
 	/**
-     * @param int $sensorId
-     * @param string $sdate
-     * @param string $edate
-     * @param int $avg
-     *
-     * @return array
-     */
+	* @param int $sensorId
+	* @param string $sdate
+	* @param string $edate
+	* @param int $avg
+	*
+	* @return array
+	*/
 	public function historicdata($sensorId, $sdate, $edate, $avg = 0)
 	{
 		$response =  $this->get('api/historicdata.json', ['id' => $sensorId, 'sdate' => $sdate, 'edate' => $edate, 'avg' => $avg]);
@@ -114,17 +114,17 @@ class prtg {
 	}
 
 	/**
-     * @param int $sensorId
-     * @param string $sdate
-     * @param string $edate
-     * @param int $graphid
-     * @param string $type
-     * @param int $avg
-     * @param int $height
-     * @param int $width
-     *
-     * @return string
-     */
+	* @param int $sensorId
+	* @param string $sdate
+	* @param string $edate
+	* @param int $graphid
+	* @param string $type
+	* @param int $avg
+	* @param int $height
+	* @param int $width
+	*
+	* @return string
+	*/
 	public function chart($sensorId, $sdate, $edate, $graphid, $type = 'svg', $avg = 15, $height = 270, $width = 850)
 	{
 		$response =  $this->get('chart.' . $type, ['id' => $sensorId, 'sdate' => $sdate, 'edate' => $edate, 'avg' => $avg, 'graphid' => $graphid, 'height' => $avg, 'width' => $width], false);
