@@ -127,7 +127,7 @@ class prtg {
 	*/
 	public function chart($sensorId, $sdate, $edate, $graphid, $type = 'svg', $avg = 15, $height = 270, $width = 850)
 	{
-		$response =  $this->get('chart.' . $type, ['id' => $sensorId, 'sdate' => $sdate, 'edate' => $edate, 'avg' => $avg, 'graphid' => $graphid, 'height' => $avg, 'width' => $width], false);
+		$response =  $this->get('chart.' . $type, ['id' => $sensorId, 'sdate' => $sdate, 'edate' => $edate, 'avg' => $avg, 'graphid' => $graphid, 'height' => $height, 'width' => $width], false);
 
 		if ($response == 'Error creating chart.') throw new Exception('Error creating chart.');
 
